@@ -16,6 +16,28 @@ int main(int argc, char const *argv[]) {
         while(users[t2-1][x]!='\0') x++;
         users[t2-1][x]=t1;
     }
+    //Remove duplicate entries
+    int a;
+    for(a=0;a<N;a++){
+        if(users[a][0]!='\0') {
+            int x=0;
+            while(users[a][x]!='\0') 
+            x++;
+            int i,j,k;
+            for (i = 0; i < x; i++) {
+                for (j = i + 1; j < x;) {
+                    if (users[a][j] == users[a][i]) {
+                        for (k = j; k < x; k++) {
+                            users[a][k] = users[a][k + 1];
+                        }
+                        x--;
+                    } else
+                    j++;
+                }
+            }
+        }
+    }
+    //Output
     printf("The friend list of all users. \n");
     for(i=0;i<N;i++){
         printf("%d->",i+1);
